@@ -1,0 +1,79 @@
+---
+project:
+  title: "Lab 7 - Project Kickoff"
+  output-dir: "docs"
+  author: Jake Matullo and Jessica Magalit
+  date: 2025-04-10
+  type: website
+execute: 
+  echoe: true
+format:
+  html:
+    self-contained: true
+---
+
+**Introduction**
+
+  The Tongass National Forest is the largest national forest in the United States, covering nearly seventeen million acres. That covers a majority of the Alaska Panhandle and is dispersed over hundreds of islands. These islands form part of what is referred to as the Inside Passage, which is the coastal seaway that runs along much of the the North Pacific coast and is often sheltered by many islands and fjords (Smith 2017). It has long been home to a variety of Native American peoples, most notably the Tlingit and the Haida peoples. Out of all these facts about the Tongass National Forest, arguably the most notable is that it also houses some of the most expansive tracts of old-growth temperate rainforest left on Earth. These are areas of immense primary productivity and critical habitat for grey wolves, black and brown bears, various seabirds, and as spawning grounds for many different species of salmon (Noss 2021). It is also a major carbon sink - one of the largest in the United States, alone holding up to 44% of the carbon stored in the nation’s national forests (Elfar 2024).
+  
+  For over three-quarters of a century, the Tongass has been subjected to industrial logging for its rich stands of western hemlock, sitka spruce, and different cedar species. Many areas - such as Prince of Wales Island - have since been subjected to heavy clearcut logging. In response, the Roadless Rule was enacted in 2001, which forbade both new road construction as well as new logging operations from being conducted. However, this protection has come under fire during both Trump administrations. Early in March, Trump issued two executive orders allowing for more logging within the United States’ national forests, which itself came after his suspension of the Roadless Rule in Alaska (Soliman 2025). The difference in the ecology between the remaining old-growth forest and the new secondary forest created by logging cannot be understated. It takes hundreds of years for forests in the Tongass to reach the level of biodiversity and ecological complexity commonly exhibited by old-growth tracts (Carstensen 2015). This has long-lasting and far-reaching impacts on many different parts of the ecosystem. In this examination of raw data collected throughout the Tongass, we want to compare and contrast the differences in water quality and water discharge between two streams on the Prince of Wales Island; one in a watershed that was heavily logged in the 1970s, and one that is in a relatively preserved watershed. By doing so, we hope to illustrate how important protecting the Tongass National Forest is to the health of the rainforest ecosystem and further champion its designation as a land under the protection of the Roadless Rule.
+  
+  One piece of data we want to use is an ArcGIS map showing the history of logging in the Tongass, from 1920 to 2020. Titled “Tongass Timber Harvest Over Time,” it was published through Saint Louis University in 2020. It is a vector map that shows the parcels of land logged during that century-long period, with each vector showing what date the logging operations were finished and how large the logging area was. This map was used to determine areas that were logged in the Tongass in order to find two stream sites that could be used to compare water quality and water discharge with each other. Those two stream sites were found through the USGS National Water Information System: Mapper tool, which show different water monitoring sites across the nation. The two chosen were USGS sites 15081497 at Staney Creek and 15086225 at Hatchery Creek. The Staney Creek site started conducting water discharge measurements in 1989 and water quality measurements in 1990, while the Hatchery Creek site began conducting water discharge measurements in 2016 and water quality measurements in 2017. All three data sources above have tables to work off of.
+  
+	In our examination of the data, we plan on using a variety of methods to explore the potential relationship between deforestation and stream water quality and discharge rates. Initially, we would like to find descriptive statistics for water quality and discharge, in particular the mean for each. This will be the main data point we will use to compare the Staney Creek and Hatchery Creek sites. Using this, we will then construct a time-series analysis that trends in water quality and discharge over the selected time spans. We will also create scatter plots, line graphs, and box graphs to compare the readings of the two stream sites with each other. Afterwards, using statistical tests (such as ANOVA) will determine whether or not our results are meaningful and suggest a genuine correlation between deforestation and water quality and discharge. There is a notable issue we currently notice with the data, that being the difference in the time range between the data for Staney Creek and Hatchery Creek. Depending on whether we want to do a complete examination of the data over the whole time range for each, or select a few years for each, this is expected to pose challenges. If we want to select a few years out of the datasets - the early 1990’s for Staney Creek, in order to get data from a time closer to the deforestation of the Creek’s watershed, or the late 2010’s for Hatchery Creek - to find the mean water quality and discharge for each, we would expect to find subtle but influential differences in climate and anthropogenic influence (not related to logging) between the two time periods. If we want to use the entire time range, that could end up creating a different data spread for Staney Creek than the one we would see for Hatchery Creek. The data would have to be normalized.
+
+**Exploring the Data**
+
+```{r}
+knitr::include_graphics("C:/Users/jarim/git/lab7/img/2025-04-09.png") 
+```
+```{r}
+knitr::include_graphics("C:/Users/jarim/git/lab7/img/2025-04-10.png") 
+
+```
+```{r}
+knitr::include_graphics("C:/Users/jarim/git/lab7/img/2025-04-10 (1).png") 
+```
+
+As mentioned, the data we plan to use for this project comes from two distinct data sets provided by the USGS Alaska Water Science Center, and a map from Saint Louis University. The map is an ArcGIS-created map showing the history of logging within the Tongass. It was used to examine which of the sites were disturbed and which ones were relatively undisturbed. The two datasets include daily, monthly, and annual measurements of streamflow and water quality for two stream sites located within the Tongass National Forest. The first site, Stanley Creek near Klawock, AK, represents a watershed that experienced heavy deforestation throughout the 1970s. Streamflow data for this site spans from 1989 to the present, and water quality data is available from 1990 to 2020. The second site, Hatchery Creek near Coffman Cove, AK, is located in a relatively undisturbed watershed, with streamflow data available from 2016 onward and water quality records from 2017 through 2024. While the time periods of data collection do not perfectly overlap, we can either retain the full time range for each site in order to observe longer-term trends and ecological changes over time, or we can take a chunk of data from a selected few years and compare the resulting mean measurements between the two sites. This will allow us to analyze how watershed conditions have developed post-deforestation in the disturbed area, and to compare those patterns with a forest that has remained relatively intact.
+
+Our exploration will include visualizing streamflow rates and water quality indicators such as pH, dissolved oxygen, and nutrient levels over time. We will assess any gaps or irregularities in the data and clean it accordingly by filtering out incomplete observations, correcting formatting issues, and aligning variable names across datasets. Rather than focus solely on overlapping years, we aim to explore the broader patterns and relationships present across the full duration of each dataset. This approach will give us a more complete understanding of how clearcutting has affected the hydrology and ecosystem health of the Tongass over decades, and how recovery may differ in a forest that has not been subjected to industrial logging.
+
+**Preliminary Methods**
+
+To answer our central research question—how does historical logging impact water quality and streamflow over time—we plan to use a combination of descriptive statistics, time series analysis, statistical testing, and data visualization. These methods are well-suited for examining ecological change over extended periods and allow for comparisons between watersheds that have experienced different levels of disturbance.
+
+First, we will use descriptive statistics (mean, median, standard deviation) to summarize key water quality parameters and streamflow data at both Staney Creek (disturbed) and Hatchery Creek (undisturbed). These summary metrics will provide a foundational understanding of how the two sites differ in terms of their hydrologic and water chemistry profiles.
+
+We will also conduct a time series analysis to examine trends in water quality and discharge over the selected time spans. Although the time periods differ between the two sites—Staney Creek data spans 1989–2020, while Hatchery Creek spans 2016–2024—we are less concerned with exact year-to-year comparisons and more interested in identifying general trends and changes following deforestation. This approach supports our broader goal of understanding the legacy effects of logging, even when the datasets don’t fully overlap temporally.
+
+In addition to statistical summaries, we will create a variety of data visualizations, including line plots to show changes over time, bar plots to compare averages between sites, and scatter plots to examine potential relationships between streamflow and water quality parameters like dissolved oxygen or turbidity.
+
+To test whether differences between sites are statistically significant, we plan to use inferential statistical tests such as t-tests or ANOVA. These methods will help determine whether the observed differences in discharge and water quality are due to natural variation or are potentially linked to past deforestation. In overlapping timeframes (e.g., 2017–2020), we may conduct paired comparisons for more direct testing.
+
+At this stage, we have access to the core datasets we need via the USGS National Water Information System and the ArcGIS vector dataset, “Tongass Timber Harvest Over Time”, which helped us identify and contextualize the stream sites. However, we may seek supplemental climate data (e.g., precipitation, temperature) to control for natural environmental variability between the sires, which could otherwise confound our analysis.
+
+We anticipate several challenges. One is the mismatch in time coverage: Staney Creek has data dating back to the early 1990s, while Hatchery Creek data begins in 2016. Two potential routes we can go down have challenges. If we choose to prioritize long-term trends and broad comparisons rather than synchronized year-by-year analysis, this temporal mismatch limits our ability to directly compare conditions under the same climate regimes. If we go for a selection of three years for each sites (the early 1990’s for Staney Creek and the late 2010’s for Hatchery Creek), the issue of temporal differences in climate and human influence could complicate our data. Additionally, not all water quality parameters are recorded consistently across sites or years, which may reduce the number of directly comparable variables.
+
+Methodologically, one challenge may be the assumption of normality and equal variance required for t-tests and ANOVA, which we’ll need to verify using diagnostic plots or transformations. Another is potential autocorrelation in time series data, which we’ll consider when modeling temporal trends.
+Despite these limitations, our chosen methods will allow us to capture and interpret important differences in watershed health between logged and unlogged areas. These insights will help illuminate the long-term ecological impacts of clearcutting in the Tongass and support future efforts to manage and restore Alaska’s temperate rainforest ecosystems.
+
+
+**Works Cited**
+
+Carstensen, R. (2015). Succession Archives. JuneauNature. https://juneaunature.discoverysoutheast.org/category/nature/ecology-101/succession/. 
+
+Elfar, A. (2024, January 23). Alaska challenges reinstated protections for Tongass National Forest. State of the Planet. https://news.climate.columbia.edu/2024/01/09/alaska-challenges-reinstated-protections-for-tongass-national-forest/.
+
+Heinrichs, E. (2020). Tongass Timber Harvest Over Time. Timber Harvesting in the Tongass National Forest. map. Retrieved 2025, from https://storymaps.arcgis.com/stories/b66b9248a2f34f639c40e4497bd5e6fc. 
+
+Noss, R. (2021, December 15). Northern Pacific Alaskan Coastal Forests. One Earth. http://www.oneearth.org/ecoregions/northern-pacific-alaskan-coastal-forests/. 
+
+Smith, J. (2019, June). An Insider’s Take on The Inside Passage. https://www.boatus.com. https://www.boatus.com/expert-advice/expert-advice-archive/2019/june/an-insiders-take-on-the-inside-passage. 
+
+Soliman, A. (2025, March 16). Trump’s executive orders to stimulate logging could fall flat in the Tongass. KTOO. https://www.ktoo.org/2025/03/13/trumps-executive-orders-to-stimulate-logging-could-fall-flat-in-the-tongass/. 
+
+USGS. (2025, April 5). USGS 15081497 STANEY C NR KLAWOCK AK. [Dataset]. NWIS Site Information for USA: Site Inventory. https://waterdata.usgs.gov/nwis/inventory?agency_code=USGS&site_no=15081497.
+
+USGS. (2025, April 9). USGS 15086225 HATCHERY C AT FOREST SVC RD 23 NR COFFMAN COVE AK. [Dataset]. NWIS Site Information for USA: Site Inventory. https://waterdata.usgs.gov/nwis/inventory?agency_code=USGS&site_no=15086225.
+
