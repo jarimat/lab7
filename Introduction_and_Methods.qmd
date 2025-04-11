@@ -1,6 +1,6 @@
 ---
 project:
-  title: "Lab 7 - Project Kickoff"
+  title: "Murky Waters: The Effect of Deforestation within the Tongass National Forest on Local Streams"
   output-dir: "docs"
   author: Jake Matullo and Jessica Magalit
   date: 2025-04-10
